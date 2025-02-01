@@ -120,6 +120,7 @@ def Cal_Anal_GUI(dfname = None):
         range_plot.add_scatter(x=rangex, y=rangey, mode='markers',
                                line_color=range_plot_line_color,
                                marker_size=range_plot_marker_size)
+        range_plot.data[0].on_click(update_range_point)
         pass
 
     def update_range_point(trace, points, selector):
@@ -149,27 +150,6 @@ def Cal_Anal_GUI(dfname = None):
             trace.marker.color = c
             trace.marker.size = s
         pass
-
-    def update_range_plot():
-        df = global_dict[whichframe.value]
-        rangex = df[Xcoord.value]
-        rangey = df[Ycoord.value]
-        c = []
-        s = []
-        if len(range_plot.data) > 0 and len(range_plot.data[
-                                                0].marker.color) == len(
-            range_plot.data[0]['x']):
-            c = list(range_plot.data[0].marker.color)
-            s = list(range_plot.data[0].marker.size)
-        range_plot.data = []
-        range_plot.add_scatter(x=rangex, y=rangey, mode='markers',
-                               line_color=range_plot_line_color,
-                               marker_size=range_plot_marker_size)
-        if len(range_plot.data[0]['x']) == len(c):
-            with range_plot.batch_update():
-                range_plot.data[0].marker.color = c
-                range_plot.data[0].marker.size = s
-        range_plot.data[0].on_click(update_range_point)
 
     with output:
         display(whichframe,Xcoord,Ycoord)
