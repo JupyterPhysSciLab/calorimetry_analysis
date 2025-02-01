@@ -173,6 +173,10 @@ def Cal_Anal_GUI(dfname = None):
         fit = fitmod.fit(tofity, x=tofitx, nan_policy="omit")
         slope = fit.params['slope'].value
         intercept = fit.params['intercept'].value
+        # Add to plot
+        result = rangex*slope+intercept
+        range_plot.add_scatter(y=result,x=rangex,mode="lines",
+                               line_color="black", name = "left slope")
          #with output:
          #   display(print("left:"+str(slope)))
         return slope,intercept
