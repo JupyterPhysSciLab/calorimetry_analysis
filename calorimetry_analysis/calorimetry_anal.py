@@ -199,6 +199,10 @@ def Cal_Anal_GUI(dfname = None):
         fit = fitmod.fit(tofity, x=tofitx, nan_policy="omit")
         slope = fit.params['slope'].value
         intercept = fit.params['intercept'].value
+        # Add to plot
+        result = rangex*slope+intercept
+        range_plot.add_scatter(y=result,x=rangex,mode="lines",
+                               line_color="red", name = "right slope")
         #with output:
         #    display(print("right:"+str(slope)))
         return slope,intercept
@@ -212,11 +216,6 @@ def Cal_Anal_GUI(dfname = None):
         # fit the right and left slopes.
         slope_left, intercept_left = fit_line_before()
         slope_right, intercept_right = fit_line_after()
-        with output:
-            display(print("left:"+str(slope_left) + ', '+ str(intercept_left)))
-            display(
-                print("right:" + str(slope_right) + ', ' + str(
-                    intercept_right)))
         # Find T change and draw vertical line at location
 
         pass
