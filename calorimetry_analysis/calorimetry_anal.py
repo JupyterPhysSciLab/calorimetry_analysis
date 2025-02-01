@@ -92,8 +92,7 @@ def Cal_Anal_GUI(dfname = None):
     trace_name = Text(placeholder = 'Trace name for legend',
                       description = 'Trace name: ',
                       disabled = True)
-# TODO need to update plot if X, Y or tracename is changed...What to do
-#  about axes labels?
+# TODO What to do about axes labels?
 
     global range_plot
     range_plot = go.FigureWidget(layout_template='simple_white')
@@ -105,8 +104,8 @@ def Cal_Anal_GUI(dfname = None):
     range_plot_marker_size = 6
     global range_plot_hilight_size
     range_plot_hilight_size = 20
-    global ranges
-    ranges = []
+    global range_points
+    range_points = []
 
     def range_plot_init():
         """Initialize the range plot with the latest data choice"""
@@ -128,7 +127,7 @@ def Cal_Anal_GUI(dfname = None):
         # in sync.
         try:
             from collections.abc import Iterable
-        except ImportError(e):
+        except ImportError as e:
             from collections import Iterable
         if not isinstance(trace['marker']['size'], Iterable):
             s = [range_plot_marker_size] * len(trace['x'])
@@ -140,15 +139,19 @@ def Cal_Anal_GUI(dfname = None):
         else:
             c = list(trace['marker']['color'])
         for i in points.point_inds:
-            if c[i] == range_plot_line_color:
+            if c[i] == range_plot_line_color and len(range_points)<4:
                 c[i] = range_plot_hilight
                 s[i] = range_plot_hilight_size
+                range_points.append(i)
             else:
                 c[i] = range_plot_line_color
                 s[i] = range_plot_marker_size
+                range_points.remove(i)
         with range_plot.batch_update():
             trace.marker.color = c
             trace.marker.size = s
+        with output:
+            print(range_points)
         pass
 
     with output:
