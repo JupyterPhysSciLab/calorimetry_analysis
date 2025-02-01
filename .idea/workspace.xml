@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efc160ac-8541-4659-97ba-b140833983be" name="Changes" comment="Selected points showing">
+    <list default="true" id="efc160ac-8541-4659-97ba-b140833983be" name="Changes" comment="Only allowing 4 selected pts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calorimetry_analysis/calorimetry_anal.py" beforeDir="false" afterPath="$PROJECT_DIR$/calorimetry_analysis/calorimetry_anal.py" afterDir="false" />
     </list>
@@ -84,13 +84,22 @@
       <option name="project" value="LOCAL" />
       <updated>1738429871201</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Only allowing 4 selected pts">
+      <option name="closed" value="true" />
+      <created>1738431822945</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738431822945</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial skeleton commit" />
     <MESSAGE value="Range plot showing data" />
     <MESSAGE value="Selected points showing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Selected points showing" />
+    <MESSAGE value="Only allowing 4 selected pts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Only allowing 4 selected pts" />
   </component>
 </project>

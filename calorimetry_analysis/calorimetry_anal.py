@@ -118,7 +118,8 @@ def Cal_Anal_GUI(dfname = None):
         s = []
         range_plot.add_scatter(x=rangex, y=rangey, mode='markers',
                                line_color=range_plot_line_color,
-                               marker_size=range_plot_marker_size)
+                               marker_size=range_plot_marker_size,
+                               name = "data")
         range_plot.data[0].on_click(update_range_point)
         pass
 
@@ -154,8 +155,83 @@ def Cal_Anal_GUI(dfname = None):
             print(range_points)
         pass
 
+    def fit_line_before():
+        """Takes the left two selected points and fits a line to those points
+        and all in between.
+        """
+        from lmfit.models import LinearModel
+        range_points.sort()
+        df = global_dict[whichframe.value]
+        rangex = df[Xcoord.value]
+        rangey = df[Ycoord.value]
+        tofitx = rangex[range_points[0]:(range_points[1]-range_points[0])]
+        tofity = rangey[range_points[0]:(range_points[1]-range_points[0])]
+        with output:
+            display(len(tofitx))
+        fitmod = LinearModel()
+        fitmod.set_param_hint("slope", vary=True, value=0.0)
+        fitmod.set_param_hint("intercept", vary=True, value=0.0)
+        # Do fit
+        fit = fitmod.fit(tofity, x=tofitx, nan_policy="omit")
+        with output:
+            display(fit)
+        slope = fit.params['slope'].value
+        intercept = fit.params['intercept'].value
+        with output:
+            display(slope,intercept)
+        scat = go.Scatter(tofity, x=tofitx, mode="lines",
+                          name="left slope", line_color="black",
+                          line_dash="solid")
+        range_plot.add_trace(scat)
+        range_plot.update()
+
+        return slope,intercept
+
+    def fit_line_after():
+        """Takes the right two selected points and fits a line to those points
+        and all in between.
+        """
+        from lmfit.models import LinearModel
+        range_points.sort()
+        df = global_dict[whichframe.value]
+        rangex = df[Xcoord.value]
+        rangey = df[Ycoord.value]
+        tofitx = rangex[range_points[2]:(range_points[3]-range_points[2])]
+        tofity = rangey[range_points[2]:(range_points[3]-range_points[2])]
+        fitmod = LinearModel()
+        fitmod.set_param_hint("slope", vary=True, value=0.0)
+        fitmod.set_param_hint("intercept", vary=True, value=0.0)
+        # Do fit
+        fit = fitmod.fit(tofity, x=tofitx, nan_policy="omit")
+        slope = fit.params['slope']
+        intercept = fit.params['intercept']
+        scat = go.Scatter(fit.best_fit, x = tofitx, mode="lines",
+                               name ="right slope", line_color="black",
+                               line_dash = "solid")
+        range_plot.add_trace(scat)
+        range_plot.update()
+        return slope,intercept
+
+    def findDT(change):
+        """Find the temperature change when button clicked.
+        Does nothing if there are not four selected points in `range_points`.
+        """
+        if len(range_points) != 4:
+           return
+        # fit the right and left slopes.
+        slope_left, intercept_left = fit_line_before()
+        slope_right, intercept_right = fit_line_after()
+        with output:
+            display(print(slope_left, intercept_left))
+            display(print(slope_right, intercept_right))
+        # Find T change and draw vertical line at location
+        pass
+
+    GetDT = Button(description = "Find Change in T",
+                   disabled = False)
+    GetDT.on_click(findDT)
     with output:
-        display(whichframe,Xcoord,Ycoord)
+        display(whichframe,Xcoord,Ycoord,GetDT)
         display(range_plot)
     display(output)
     return
