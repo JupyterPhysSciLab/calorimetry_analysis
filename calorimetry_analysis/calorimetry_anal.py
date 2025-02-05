@@ -177,8 +177,8 @@ def Cal_Anal_GUI(dfname = None):
         result = rangex*slope+intercept
         range_plot.add_scatter(y=result,x=rangex,mode="lines",
                                line_color="black", name = "left slope")
-         #with output:
-         #   display(print("left:"+str(slope)))
+        with output:
+            display(print("left = " + str(slope) + "*x+" + str(intercept)))
         return slope,intercept
 
     def fit_line_after():
@@ -203,8 +203,8 @@ def Cal_Anal_GUI(dfname = None):
         result = rangex*slope+intercept
         range_plot.add_scatter(y=result,x=rangex,mode="lines",
                                line_color="red", name = "right slope")
-        #with output:
-        #    display(print("right:"+str(slope)))
+        with output:
+            display(print("right = "+str(slope)+"*x+"+str(intercept)))
         return slope,intercept
 
     def findDT(change):
@@ -217,7 +217,28 @@ def Cal_Anal_GUI(dfname = None):
         slope_left, intercept_left = fit_line_before()
         slope_right, intercept_right = fit_line_after()
         # Find T change and draw vertical line at location
-
+        # 1-estimate by finding crossing with average of the before and after
+        range_points.sort()
+        df = global_dict[whichframe.value]
+        rangex = df[Xcoord.value]
+        rangey = df[Ycoord.value]
+        x_m_guess = None
+        for k in range(range_points[1], range_points[2]):
+            avg_slope = 0.5*(slope_left+slope_right)
+            avg_int = 0.5*(intercept_left+intercept_right)
+            avg = avg_slope*rangex[k]+avg_int
+            if (avg <= rangey[k+1] and avg > rangey[k]) or (avg >= rangey[k+1]
+                                                           and avg < rangey[k]):
+                data_slope = (rangey[k+1]-rangey[k])/(rangex[k+1]-rangex[k])
+                data_int = rangey[k]-data_slope*rangex[k]
+                x_m_guess = (data_int-avg_int)/(avg_slope-data_slope)
+        DT_guess = None
+        if x_m_guess:
+            DT_guess = (slope_right*x_m_guess+intercept_right-slope_left
+                        *x_m_guess-intercept_left)
+        with output:
+            display(print('x_m_guess:' + str(x_m_guess)+' DT_guess:'+str(
+                DT_guess), end=''))
         pass
 
     GetDT = Button(description = "Find Change in T",
