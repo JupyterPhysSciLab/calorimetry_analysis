@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efc160ac-8541-4659-97ba-b140833983be" name="Changes" comment="both lines showing">
+    <list default="true" id="efc160ac-8541-4659-97ba-b140833983be" name="Changes" comment="Guess at delta T without integrating areas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calorimetry_analysis/calorimetry_anal.py" beforeDir="false" afterPath="$PROJECT_DIR$/calorimetry_analysis/calorimetry_anal.py" afterDir="false" />
     </list>
@@ -124,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738451656023</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Guess at delta T without integrating areas">
+      <option name="closed" value="true" />
+      <created>1738722987496</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1738722987496</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -136,6 +144,7 @@
     <MESSAGE value="Both linear fits done" />
     <MESSAGE value="left line showing" />
     <MESSAGE value="both lines showing" />
-    <option name="LAST_COMMIT_MESSAGE" value="both lines showing" />
+    <MESSAGE value="Guess at delta T without integrating areas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Guess at delta T without integrating areas" />
   </component>
 </project>

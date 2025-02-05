@@ -177,8 +177,8 @@ def Cal_Anal_GUI(dfname = None):
         result = rangex*slope+intercept
         range_plot.add_scatter(y=result,x=rangex,mode="lines",
                                line_color="black", name = "left slope")
-        with output:
-            display(print("left = " + str(slope) + "*x+" + str(intercept)))
+        #with output:
+        #    display(print("left = " + str(slope) + "*x+" + str(intercept)))
         return slope,intercept
 
     def fit_line_after():
@@ -203,8 +203,8 @@ def Cal_Anal_GUI(dfname = None):
         result = rangex*slope+intercept
         range_plot.add_scatter(y=result,x=rangex,mode="lines",
                                line_color="red", name = "right slope")
-        with output:
-            display(print("right = "+str(slope)+"*x+"+str(intercept)))
+        #with output:
+        #    display(print("right = "+str(slope)+"*x+"+str(intercept)))
         return slope,intercept
 
     def findDT(change):
@@ -233,12 +233,20 @@ def Cal_Anal_GUI(dfname = None):
                 data_int = rangey[k]-data_slope*rangex[k]
                 x_m_guess = (data_int-avg_int)/(avg_slope-data_slope)
         DT_guess = None
+        DT_line_y =[]
+        DT_line_x = []
         if x_m_guess:
-            DT_guess = (slope_right*x_m_guess+intercept_right-slope_left
-                        *x_m_guess-intercept_left)
+            right_pt = slope_right*x_m_guess+intercept_right
+            left_pt = slope_left*x_m_guess+intercept_left
+            DT_guess = right_pt-left_pt
+            DT_line_x = [x_m_guess,x_m_guess]
+            DT_line_y = [right_pt,left_pt]
+            range_plot.add_scatter(x=DT_line_x,y=DT_line_y, mode="lines",
+                               line_dash='dot', name = 'Temperature Change',
+                                   line_color="blue")
         with output:
-            display(print('x_m_guess:' + str(x_m_guess)+' DT_guess:'+str(
-                DT_guess), end=''))
+            display(HTML('x_m_guess:' + str(x_m_guess)+' DT_guess:'+str(
+                DT_guess)))
         pass
 
     GetDT = Button(description = "Find Change in T",
