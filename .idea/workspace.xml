@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efc160ac-8541-4659-97ba-b140833983be" name="Changes" comment="works, not docs, no tests">
+    <list default="true" id="efc160ac-8541-4659-97ba-b140833983be" name="Changes" comment="first prerelease">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "gutow"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/JupyterPhysSciLab/calorimetry_analysis.git",
+    "accountId": "9f502e84-c538-4642-a4b9-7d3d56f76577"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -164,8 +176,27 @@
       <option name="project" value="LOCAL" />
       <updated>1739032645409</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="first prerelease">
+      <option name="closed" value="true" />
+      <created>1739034205820</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1739034205820</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial skeleton commit" />
@@ -181,6 +212,7 @@
     <MESSAGE value="Parr 6772 datalog.csv loader" />
     <MESSAGE value="reset working" />
     <MESSAGE value="works, not docs, no tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="works, not docs, no tests" />
+    <MESSAGE value="first prerelease" />
+    <option name="LAST_COMMIT_MESSAGE" value="first prerelease" />
   </component>
 </project>
