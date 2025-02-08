@@ -1,9 +1,13 @@
 [project]
 license = {text = "GPL-3.0-or-later"}
 
+[project.urls]
+repository = "https://github.com/JupyterPhysSciLab/calorimetry_analysis"
+"Bug Tracker" = "https://github.com/JupyterPhysSciLab/calorimetry_analysis/issues"
+
 [tool.poetry]
 name = "calorimetry-analysis"
-version = "0.1.1"
+version = "0.1.2a0"
 description = "Analyze calorimetry temperature changes with GUI in Jupyter"
 authors = ["gutow <gutow@uwosh.edu>"]
 readme = "README.md"
