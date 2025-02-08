@@ -34,8 +34,7 @@ def Cal_Anal_GUI(dfname = None):
     with output:
         display(HTML(
             "<h3 id ='Cal_Anal_GUI' style='text-align:center;'>Calorimetry "
-            "Analysis GUI</h3> <div style='text-align:center;'>"
-            "<span style='color:green;'>Steps with a * are required.</span> "))
+            "Analysis GUI</h3>"))
 
     longdesc = {'description_width': 'initial'}
 
@@ -219,6 +218,7 @@ def Cal_Anal_GUI(dfname = None):
         slope_right, intercept_right = fit_line_after()
         # Find T change and draw vertical line at location
         # 1-estimate by finding crossing with average of the before and after
+        #  lines.
         range_points.sort()
         df = global_dict[whichframe.value]
         rangex = df[Xcoord.value]
@@ -246,9 +246,11 @@ def Cal_Anal_GUI(dfname = None):
                                line_dash='dot', name = 'Temperature Change',
                                    line_color="blue")
             GetDT.set_trait("disabled", True)
+            fourdec = '{:.4f}'
+            midstr = fourdec.format(x_m_guess)
+            DTstr = fourdec.format(DT_guess)
         with output:
-            display(HTML('Midpoint est:' + str(x_m_guess)+
-                         ' Temp change est:'+str(DT_guess)))
+            display(HTML('Midpoint est: ' + midstr+'  |  &Delta;T est: '+DTstr))
         pass
 
     GetDT = Button(description = "Find Change in T",
@@ -277,7 +279,28 @@ def Cal_Anal_GUI(dfname = None):
         pass
 
     NextBut.on_click(reset)
-    instr_str = '<h3>Instructions</h3>'
+    #instr_str = (r'<p style="text-align:center;font-weight:bold">Instructions'
+    #             r'</h3>')
+    instr_str = (r'<ol><li>Choose the DataFrame containing your '
+                  r'data, '
+                  r'then the columns containing the X and Y '
+                  r'coordinates.</li>'
+                  r'<li>Select two points (by clicking on them) to the left of '
+                  r'the temperature change defining the linear region '
+                  r'before the change. '
+                  r'Also, select two points defining the linear '
+                  r'region after the change.</li>'
+                  r'<li>A maximum of four points may be selected. Selected '
+                  r'points may be deselected by clicking on them '
+                  r'a second time.</li>'
+                  r'<li>Click the <span '
+                  r'style="background-color:lightgray;">Find Change in '
+                  r'T</span> button. This will show fits on the graph and '
+                  r'print the estimated mid-point time and &Delta;T.</li>'
+                  r'<li>Use the <span style '
+                  r'="background-color:lightgray;">Reset'
+                  r'</span> button to clear the fits and '
+                  r'selected points to make another measurement.</li></ol>')
     instr = richLabel(instr_str)
     with output:
         display(HBox([VBox([whichframe,Xcoord,Ycoord,GetDT,NextBut]),instr]))
