@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efc160ac-8541-4659-97ba-b140833983be" name="Changes" comment="Draw T change line">
+    <list default="true" id="efc160ac-8541-4659-97ba-b140833983be" name="Changes" comment="Parr 6772 datalog.csv loader">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calorimetry_analysis/calorimetry_anal.py" beforeDir="false" afterPath="$PROJECT_DIR$/calorimetry_analysis/calorimetry_anal.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calorimetry_analysis/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/calorimetry_analysis/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738724761979</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Parr 6772 datalog.csv loader">
+      <option name="closed" value="true" />
+      <created>1738798525585</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1738798525585</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -154,6 +163,7 @@
     <MESSAGE value="both lines showing" />
     <MESSAGE value="Guess at delta T without integrating areas" />
     <MESSAGE value="Draw T change line" />
-    <option name="LAST_COMMIT_MESSAGE" value="Draw T change line" />
+    <MESSAGE value="Parr 6772 datalog.csv loader" />
+    <option name="LAST_COMMIT_MESSAGE" value="Parr 6772 datalog.csv loader" />
   </component>
 </project>

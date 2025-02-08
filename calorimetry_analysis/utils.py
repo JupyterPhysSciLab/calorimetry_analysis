@@ -1,6 +1,5 @@
 import pandas
 
-
 def find_pandas_dataframe_names():
     """
     This operation will search the interactive name space for pandas

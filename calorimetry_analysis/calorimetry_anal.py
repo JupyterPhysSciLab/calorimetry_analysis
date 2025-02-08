@@ -1,4 +1,5 @@
 import pandas
+from attr.validators import disabled
 
 
 def Cal_Anal_GUI(dfname = None):
@@ -244,16 +245,42 @@ def Cal_Anal_GUI(dfname = None):
             range_plot.add_scatter(x=DT_line_x,y=DT_line_y, mode="lines",
                                line_dash='dot', name = 'Temperature Change',
                                    line_color="blue")
+            GetDT.set_trait("disabled", True)
         with output:
-            display(HTML('x_m_guess:' + str(x_m_guess)+' DT_guess:'+str(
-                DT_guess)))
+            display(HTML('Midpoint est:' + str(x_m_guess)+
+                         ' Temp change est:'+str(DT_guess)))
         pass
 
     GetDT = Button(description = "Find Change in T",
                    disabled = False)
     GetDT.on_click(findDT)
+    NextBut = Button(description = 'Reset',
+                     disabled = False,
+                     style=longdesc)
+    def reset(change):
+        # delete all traces except for data trace
+        newplotdata = []
+        for k in range_plot.data:
+             if k["name"] == 'data':
+                 newplotdata.append(k)
+        range_plot.data = tuple(newplotdata)
+        # deselect the range points
+        with range_plot.batch_update():
+            range_plot.data[0].marker.color = range_plot_line_color
+            range_plot.data[0].marker.size = range_plot_marker_size
+        #range_plot_init()
+        # clear range_points
+        global range_points
+        range_points = []
+        # reactivate DT button
+        GetDT.set_trait("disabled", False)
+        pass
+
+    NextBut.on_click(reset)
+    instr_str = '<h3>Instructions</h3>'
+    instr = richLabel(instr_str)
     with output:
-        display(whichframe,Xcoord,Ycoord,GetDT)
+        display(HBox([VBox([whichframe,Xcoord,Ycoord,GetDT,NextBut]),instr]))
         display(range_plot)
     display(output)
     return
