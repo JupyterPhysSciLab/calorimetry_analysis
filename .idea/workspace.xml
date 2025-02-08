@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efc160ac-8541-4659-97ba-b140833983be" name="Changes" comment="release v 0.1.1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-    </list>
+    <list default="true" id="efc160ac-8541-4659-97ba-b140833983be" name="Changes" comment="add urls" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -200,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739036883211</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add urls">
+      <option name="closed" value="true" />
+      <created>1739037772881</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1739037772881</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -230,6 +235,7 @@
     <MESSAGE value="works, not docs, no tests" />
     <MESSAGE value="first prerelease" />
     <MESSAGE value="release v 0.1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="release v 0.1.1" />
+    <MESSAGE value="add urls" />
+    <option name="LAST_COMMIT_MESSAGE" value="add urls" />
   </component>
 </project>
